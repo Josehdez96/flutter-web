@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
 
+import 'package:bases_web/providers/counter_provider.dart';
 import 'package:bases_web/ui/shared/app_menu.dart';
 import 'package:bases_web/ui/shared/custom_flat_button.dart';
+import 'package:provider/provider.dart';
 
-class CounterProviderPage extends StatefulWidget {
+class CounterProviderPage extends StatelessWidget {
   const CounterProviderPage({ Key? key }) : super(key: key);
 
   @override
-  _CounterProviderPageState createState() => _CounterProviderPageState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: ( _ ) => CounterProvider(),
+      child: _CounterProviderPageBody()
+    );
+  }
 }
 
-class _CounterProviderPageState extends State<CounterProviderPage> {
-  int counter = 15;
+class _CounterProviderPageBody extends StatelessWidget {
+  const _CounterProviderPageBody({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    final counterProvider = Provider.of<CounterProvider>(context);
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +41,7 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric( horizontal: 10.0 ),
               child: Text(
-                'Contador: $counter',
+                'Contador: ${ counterProvider.counter }',
                 style: TextStyle(
                   fontSize: 80,
                   fontWeight: FontWeight.bold,
@@ -45,12 +55,12 @@ class _CounterProviderPageState extends State<CounterProviderPage> {
             children: [
               CustomFlatButton(
                 text: 'Incrementar',
-                onPressed: () => setState(() => counter++)
+                onPressed: () => counterProvider.increment()
               ),
               
               CustomFlatButton(
                 text: 'Decrementar',
-                onPressed: () => setState(() => counter--)
+                onPressed: () => counterProvider.decrement()
               ),
             ],
           ),
