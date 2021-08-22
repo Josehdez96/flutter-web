@@ -11,13 +11,13 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/stateful':
-        return _fadeRoute( CounterPage(), '/stateful' );
+        return _fadeRoute( CounterView(), '/stateful' );
 
       case '/provider':
-        return _fadeRoute( CounterProviderPage(), '/provider' );
+        return _fadeRoute( CounterProviderView(), '/provider' );
 
       default:
-      return _fadeRoute( Page404(), '/404' );
+      return _fadeRoute( View404(), '/404' );
     }
   }
 

@@ -5,8 +5,8 @@ import 'package:bases_web/ui/shared/app_menu.dart';
 import 'package:bases_web/ui/shared/custom_flat_button.dart';
 import 'package:provider/provider.dart';
 
-class CounterProviderPage extends StatelessWidget {
-  const CounterProviderPage({ Key? key }) : super(key: key);
+class CounterProviderView extends StatelessWidget {
+  const CounterProviderView({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,49 +25,47 @@ class _CounterProviderPageBody extends StatelessWidget {
 
     final counterProvider = Provider.of<CounterProvider>(context);
 
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
 
-          AppMenu(),
+        AppMenu(),
 
-          Spacer(),
+        Spacer(),
 
-          Text('Contador Provider', style: TextStyle(fontSize: 20)),
+        Text('Contador Provider', style: TextStyle(fontSize: 20)),
 
-          FittedBox(
-            fit: BoxFit.contain,
-            child: Padding(
-              padding: const EdgeInsets.symmetric( horizontal: 10.0 ),
-              child: Text(
-                'Contador: ${ counterProvider.counter }',
-                style: TextStyle(
-                  fontSize: 80,
-                  fontWeight: FontWeight.bold,
-                ),
+        FittedBox(
+          fit: BoxFit.contain,
+          child: Padding(
+            padding: const EdgeInsets.symmetric( horizontal: 10.0 ),
+            child: Text(
+              'Contador: ${ counterProvider.counter }',
+              style: TextStyle(
+                fontSize: 80,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
+        ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomFlatButton(
-                text: 'Incrementar',
-                onPressed: () => counterProvider.increment()
-              ),
-              
-              CustomFlatButton(
-                text: 'Decrementar',
-                onPressed: () => counterProvider.decrement()
-              ),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomFlatButton(
+              text: 'Incrementar',
+              onPressed: () => counterProvider.increment()
+            ),
+            
+            CustomFlatButton(
+              text: 'Decrementar',
+              onPressed: () => counterProvider.decrement()
+            ),
+          ],
+        ),
 
-          Spacer()
-        ],
-      ),
+        Spacer()
+      ],
     );
   }
 }
