@@ -18,13 +18,7 @@ class _CounterViewState extends State<CounterView> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-
-        AppMenu(),
-
-        Spacer(),
-
         Text('Contador Stateful', style: TextStyle(fontSize: 20)),
-
         FittedBox(
           fit: BoxFit.contain,
           child: Padding(
@@ -38,7 +32,6 @@ class _CounterViewState extends State<CounterView> {
             ),
           ),
         ),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -52,9 +45,7 @@ class _CounterViewState extends State<CounterView> {
               onPressed: () => setState(() => counter--)
             ),
           ],
-        ),
-
-        Spacer()
+        )
       ],
     );
   }

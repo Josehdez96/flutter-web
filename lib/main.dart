@@ -1,4 +1,5 @@
 import 'package:bases_web/router/route_generator.dart';
+import 'package:bases_web/ui/layout/main_layout_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       initialRoute: '/stateful',
-      onGenerateRoute: RouteGenerator.generateRoute
+      onGenerateRoute: RouteGenerator.generateRoute,
+      builder: ( _, child ) {
+        return MainLayoutPage(
+          child: child!,
+        );
+      },
     );
   }
 }
